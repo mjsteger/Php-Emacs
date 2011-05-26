@@ -1,0 +1,6 @@
+To Install, simply copy the .emacs and .emacs.d to your home directory
+
+cat .emacs >> ~/.emacs
+
+mkdir -p ~/.emacs.d
+cp  .emacs.d/*	~/.emacs.d/
