@@ -1,5 +1,7 @@
 To Install, simply copy the .emacs and .emacs.d to your home directory
 
+cd Php-Emacs
+
 cat .emacs >> ~/.emacs
 
 mkdir -p ~/.emacs.d
