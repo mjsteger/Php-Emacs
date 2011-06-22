@@ -6,3 +6,4 @@ cat .emacs >> ~/.emacs
 
 mkdir -p ~/.emacs.d
 cp  .emacs.d/*	~/.emacs.d/
+
