@@ -26,16 +26,22 @@
 
 (setq fill-column 80)
 
+
 (defun clean-php-mode ()
   (interactive)
-  (php-mode)
-  (setq c-basic-offset 2) ; 2 tabs indenting
-  (setq indent-tabs-mode nil)
-  (setq fill-column 78)
+  (set (make-local-variable 'c-basic-offset) 1)
+  (set (make-local-variable 'tab-width) 4)
+  (setq indent-tabs-mode 1)
+  (add-hook 'local-write-file-hooks
+	        '(lambda()
+		          (save-excursion
+			     (tabify (point-min) (point-max))
+			      (delete-trailing-whitespace)
+			       )))
+  (setq fill-column 80)
   (c-set-offset 'case-label '+)
-  (c-set-offset 'arglist-close 'c-lineup-arglist-operators))
-(c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
-(c-set-offset 'arglist-cont-nonempty 'c-lineup-math) ; for DBTNG fields and values
+  (c-set-offset 'arglist-close 'c-lineup-arglist-operators)
+  (php-electric-mode 1))
 
 ;; run php lint when press C-c C-c key
 ;; php lint
@@ -129,4 +135,5 @@
 	       ;; if you like patial match,
 	       ;; use `ac-source-php-completion-patial' instead of `ac-source-php-completion'.
 	       ;; (add-to-list 'ac-sources 'ac-source-php-completion-partial)
+	       (clean-php-mode)
 	       (auto-complete-mode t))))
