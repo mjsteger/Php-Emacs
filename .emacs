@@ -137,3 +137,13 @@
 	       ;; (add-to-list 'ac-sources 'ac-source-php-completion-partial)
 	       (clean-php-mode)
 	       (auto-complete-mode t))))
+
+(require 'ido)
+; Turn on ido, which allows for incomplete matches for files
+(ido-mode 1)
+; Turns on the incomplete matching for other possible things(i.e. filenames)
+(icomplete-mode t)
+; Make ido create files without asking if there is a match
+(setq ido-create-new-buffer 'always)
+; Allow for better matching
+(setq ido-enable-flex-matching t)
